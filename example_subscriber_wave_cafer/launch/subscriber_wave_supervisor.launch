@@ -1,0 +1,18 @@
+<launch>
+    <arg name="ns" default="greetings"/>
+    <arg name="exec_name" default="subscriber_wave_supervisor"/>
+
+    <!--CAFER-->
+    <arg name="cafer_type" default="$(arg exec_name)"/>
+    <arg name="managed_uuid" default="none"/>
+    <!--/CAFER-->
+
+    <node name="greeting_retrieve" pkg="example_subscriber_wave_cafer" type="$(arg exec_name)" ns="$(arg ns)" output="screen">
+        <rosparam ns="cafer" subst_value="True">
+            mgmt: "/management_topic"
+            freq: 1.0
+            type: "$(arg cafer_type)"
+            uuid: "$(arg managed_uuid)"
+        </rosparam>
+    </node>
+</launch>

@@ -1,0 +1,7 @@
+type:  "greeting_storage"
+sequential:  true
+data_structure:
+  my_greetings:  "hello_sequence.yml"
+topics:
+  data:
+    my_greetings: "/chatter"

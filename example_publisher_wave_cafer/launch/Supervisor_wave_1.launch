@@ -1,0 +1,20 @@
+<launch>
+    <arg name="ns" default="greetings"/>
+    <arg name="exec_name" default="example_publisher_wave_cafer"/>
+
+    <!--CAFER-->
+    <arg name="cafer_type" default="wave_supervisor"/>
+    <arg name="managed_uuid" default="none"/>
+    <!--/CAFER-->
+
+    <node name="register_hellos" pkg="example_publisher_wave_cafer" type="$(arg exec_name)" ns="$(arg ns)" output="screen">
+        <rosparam ns="cafer" subst_value="True">
+            mgmt: "/management_topic"
+            freq: 1.0
+            type: "$(arg cafer_type)"
+            uuid: "$(arg managed_uuid)"
+        </rosparam>
+        <rosparam command="load" file="$(find example_publisher_wave_cafer)/launch/params/supervisor_wave_1.yml" ns="components"/>
+        <rosparam command="load" file="$(find example_publisher_wave_cafer)/launch/params/wave_1_metadata.yml"/>
+    </node>
+</launch>

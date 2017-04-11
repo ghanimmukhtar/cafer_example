@@ -1,0 +1,9 @@
+## Take care not to declare cyclic dependencies, like:
+## A:
+##  depends_on: "B"
+## B:
+##  depends_on: "A"
+externals:
+  simple_publisher:
+    launch:
+      launch: "simple_publisher.launch"
